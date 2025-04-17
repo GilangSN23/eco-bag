@@ -3,6 +3,8 @@ import Navbar from "./resizable-navbar-demo"
 import TypewriterEffect from "./typewriter-effect-demo-1"
 import  BackgroundBeams from "./background-beams-demo"
 import  HoverEffect  from "./card-hover-effect-demo"
+import BentoGridItem  from "./bento-grid-demo"
+import  InfiniteMovingCards  from "./infinite-moving-cards-demo"
 export default function Home() {
   return (
     <>
@@ -10,6 +12,8 @@ export default function Home() {
       <Navbar />
       <TypewriterEffect />
       <HoverEffect/>
+      <BentoGridItem/>
+      <InfiniteMovingCards/>
     </>
   )
 }
