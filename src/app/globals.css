@@ -26,3 +26,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@keyframes scroll-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll-animation var(--animation-duration) linear infinite;
+}
+
+.hover\:animation-paused:hover {
+  animation-play-state: paused;
+}

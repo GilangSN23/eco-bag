@@ -18,16 +18,16 @@ export const HoverEffect = ({
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8">
-      <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-10", className)}>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+      <div className={cn("grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 py-10", className)}>
         {items.map((item, idx) => (
           <div
             key={idx}
             className={cn(
               "relative group block h-full w-full cursor-default",
-              idx === 0 && "pr-10", // kiri
-              idx === 1 && "px-10 border-l border-zinc-700 h-50", // tengah, garis lebih pendek
-              idx === 2 && "pl-10 border-l border-zinc-700 h-50" // kanan, garis lebih pendek
+              idx === 0 && "sm:pr-4 lg:pr-10", // kiri
+              idx === 1 && "sm:px-4 lg:px-10 lg:border-l border-zinc-700 sm:border-0", // tengah, border hanya muncul di layar besar
+              idx === 2 && "sm:pl-4 lg:pl-10 lg:border-l border-zinc-700 sm:border-0" // kanan, border hanya muncul di layar besar
             )}
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -59,6 +59,7 @@ export const HoverEffect = ({
     </div>
   )
 }
+
 
 export const Card = ({
   className,

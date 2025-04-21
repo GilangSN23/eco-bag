@@ -26,7 +26,7 @@ interface NavItemsProps {
   items: {
     name: string;
     link: string;
-  }[];
+  }[]; 
   className?: string;
   onItemClick?: () => void;
 }
@@ -50,25 +50,20 @@ interface MobileNavMenuProps {
 }
 
 export const Navbar = ({ children, className }: NavbarProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+  const { scrollY } = useScroll();
   const [visible, setVisible] = useState<boolean>(false);
 
+  // Mengubah nilai visible berdasarkan scroll
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 100) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
+    setVisible(latest > 100); // Menampilkan navbar setelah scroll lebih dari 100px
   });
 
   return (
     <motion.div
-      ref={ref}
-      className={cn("sticky inset-x-0 top-0 z-50 w-full", className)} // Adjust z-index to ensure it's on top
+      className={cn(
+        "fixed top-0 left-0 z-[100] w-full ", // Menggunakan fixed dan z-index tinggi
+        className // Menyertakan class tambahan jika ada
+      )}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -110,8 +105,6 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
     </motion.div>
   );
 };
-
-
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);

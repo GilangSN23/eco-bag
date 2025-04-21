@@ -32,7 +32,6 @@ export default function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
             <NavbarButton variant="primary">Tentang</NavbarButton>
           </div>
         </NavBody>

@@ -6,16 +6,14 @@ export default function TypewriterEffectSmoothDemo() {
   const line1 = [
     { text: "Rumah" },
     { text: "Industri" },
-  ]
-
+  ];
+  
   const line2 = [
     { text: "Tas" },
     { text: "Kustom" },
-    {
-      text: "Hartono.",
-      className: "text-blue-500 dark:text-blue-500",
-    },
-  ]
+    { text: "Hartono.", className: "text-blue-500 dark:text-blue-500" },
+  ];
+  
 
   return (
     <div
@@ -38,8 +36,8 @@ export default function TypewriterEffectSmoothDemo() {
             "Pesan Suka-Suka, Tetap Berkualitas Juara"
           </p>
           <div className="mt-2 text-6xl sm:text-8xl md:text-9xl font-bold leading-tight">
-            <TypewriterEffectSmooth words={line1} />
-            <TypewriterEffectSmooth words={line2} />
+              <TypewriterEffectSmooth words={line1} delay={1} />
+              <TypewriterEffectSmooth words={line2} delay={3.2} />
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center md:justify-start">
             <button className="w-44 h-12 rounded-xl bg-white text-black text-sm hover:bg-gray-200 transition">

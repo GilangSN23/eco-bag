@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react"
 
 export const InfiniteMovingCards = ({
   items,
-  direction = "left",
+  direction = "right", // Arah animasi ke kanan
   speed = "fast",
   pauseOnHover = true,
   className,
@@ -26,7 +26,9 @@ export const InfiniteMovingCards = ({
   useEffect(() => {
     addAnimation()
   }, [])
+
   const [start, setStart] = useState(false)
+
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children)
@@ -43,15 +45,17 @@ export const InfiniteMovingCards = ({
       setStart(true)
     }
   }
+
   const getDirection = () => {
     if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty("--animation-direction", "forwards")
+      if (direction === "right") {
+        containerRef.current.style.setProperty("--animation-direction", "reverse") // Gerak ke kanan
       } else {
-        containerRef.current.style.setProperty("--animation-direction", "reverse")
+        containerRef.current.style.setProperty("--animation-direction", "forwards") // Gerak ke kiri
       }
     }
   }
+
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
@@ -63,20 +67,21 @@ export const InfiniteMovingCards = ({
       }
     }
   }
+
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_left,transparent,white_20%,white_80%,transparent)]",
         className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4 animate-scroll",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]",
+          pauseOnHover && "hover:animation-paused",
         )}
       >
         {items.map((item, idx) => (
